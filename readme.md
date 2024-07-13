@@ -1,6 +1,5 @@
-# Documentación de la API de Traducción
 
-## Descripción General
+# Descripción General
 
 Esta API permite traducir texto de un idioma a otro utilizando el servicio de Google Translate.
 
@@ -59,7 +58,7 @@ curl -X POST http://<tu-dominio>/traducir -H "Content-Type: application/json" -d
   "texto": "Hello, world!"
 }'
 
-```
+````
 
 #### Ejemplo de respuesta 
 
