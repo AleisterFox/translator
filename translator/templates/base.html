@@ -3,7 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Proyecto</title>
+    <meta name="author" content="Eric Aguirrez Andraca" />
+    <meta
+      name="description"
+      content="PolyGlot es una potente API de traducción que permite traducir texto entre múltiples idiomas de manera rápida y precisa. Ideal para desarrolladores que buscan integrar capacidades de traducción en sus aplicaciones."
+    />
+    <meta
+      name="keywords"
+      content="PolyGlot, API de traducción, traducción de texto, múltiples idiomas, traductor, integración de traducción, traducción precisa, herramientas para desarrolladores, traducción rápida"
+    />
+    <meta name="robots" content="all" />
+    <meta
+      property="og:description"
+      content="PolyGlot es una potente API de traducción que permite traducir texto entre múltiples idiomas de manera rápida y precisa. Ideal para desarrolladores que buscan integrar capacidades de traducción en sus aplicaciones."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://translator-ovb3.onrender.com/" />
+    <meta property="og:image" content="img/icon.png" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:site_name" content="PolyGlot | Text translation App" />
+    <meta name="msapplication-TileColor" content="rgb(16, 48, 55)" />
+    <meta name="theme-color" content="rgb(16, 48, 55)" />
+    <link rel="canonical" href="https://translator-ovb3.onrender.com/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "PolyGlot",
+        "image": "https://translator-ovb3.onrender.com/static/images/logo-white.png",
+        "@id": "",
+        "url": "https://translator-ovb3.onrender.com/",
+        "telephone": "4612082288",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Medicos 124",
+          "addressLocality": "Celaya",
+          "postalCode": "38010",
+          "addressCountry": "MX"
+        },
+      }
+    </script>
+
+    <title>PolyGlot | Text translation App</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
@@ -17,7 +60,7 @@
     <header>
       <div class="logo">
         <img
-          src="{{ url_for('static', filename='images/logo.png') }}"
+          src="{{ url_for('static', filename='images/logo-white.png') }}"
           alt="Logo"
         />
       </div>
