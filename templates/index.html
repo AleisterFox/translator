@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Descripción General</h1>
+<p>Esta API permite traducir texto de un idioma a otro utilizando el servicio de Google Translate.</p>
+
+<h2>Endpoints</h2>
+
+<h3>POST /traducir</h3>
+<p>Traduce el texto enviado en la solicitud de un idioma de origen a un idioma de destino.</p>
+
+<h4>URL</h4>
+<p><code>/traducir</code></p>
+
+<h4>Método HTTP</h4>
+<p><code>POST</code></p>
+
+<h2>Solicitud</h2>
+
+<h4>Headers de la Solicitud</h4>
+<pre>
+<code>
+{
+"Content-Type": "application/json",
+"Authorization": `Bearer ${token}`
+}
+</code>
+</pre>
+
+<h4>Cuerpo de la Solicitud (JSON)</h4>
+<pre>
+<code>{
+"idioma_origen": "codigo_idioma_origen",
+"idioma_destino": "codigo_idioma_destino",
+"texto": "texto_a_traducir"
+}</code>
+</pre>
+
+<h4>Parámetros de la solicitud</h4>
+<ul>
+    <li><code>Authorization</code> <p>(string): Token necesario para usar la API</p></li>
+    <li><code>idioma_origen</code> <p>(string): Código del idioma de origen (por ejemplo, "en" para inglés, "es" para español).</p></li>
+    <li><code>idioma_destino</code> <p>(string): Código del idioma de destino.</p></li>
+    <li><code>texto</code> <p>(string): El texto que se desea traducir.</p></li>
+</ul>
+
+<p>Puedes obtener tu token <a href="{{ url_for('auth.token_page') }}">aqui</a> </p>
+
+<h2>Respuesta</h2>
+
+<h4>Cuerpo de la respuesta (JSON)</h4>
+<pre>
+<code>{
+"texto_traducido": "texto_traducido"
+}</code>
+</pre>
+
+<h4>Parámetros de la respuesta</h4>
+<ul>
+    <li><code>texto_traducido</code> <p>(string): El texto traducido al idioma de destino</p></li>
+</ul>
+
+<h4>Ejemplo de solicitud</h4>
+<pre>
+<code>curl -X POST http://<tu-dominio>/traducir -H "Content-Type: application/json" -d '{
+"idioma_origen": "en",
+"idioma_destino": "es",
+"texto": "Hello, world!"
+}'</code>
+</pre>
+
+<h4>Ejemplo de respuesta</h4>
+<pre>
+<code>{
+"texto_traducido": "Hola, mundo!"
+}</code>
+</pre>
+{% endblock %}

@@ -1,4 +1,3 @@
-
 # Descripción General
 
 Esta API permite traducir texto de un idioma a otro utilizando el servicio de Google Translate.
@@ -19,6 +18,15 @@ Traduce el texto enviado en la solicitud de un idioma de origen a un idioma de d
 
 # Solicitud
 
+##### Encabezados de la solicitud (JSON)
+
+```json
+{
+  "Content-Type": "application/json",
+  "Authorization": `Bearer ${token}`
+}
+```
+
 ##### Cuerpo de la Solicitud (JSON)
 
 ```json
@@ -29,15 +37,16 @@ Traduce el texto enviado en la solicitud de un idioma de origen a un idioma de d
 }
 ```
 
-#### Parámetros de la solicitud
+##### Parámetros de la solicitud
 
+- `Authorization` (string): Token necesario para usar la API.
 - `idioma_origen` (string): Código del idioma de origen (por ejemplo, "en" para inglés, "es" para español).
 - `idioma_destino` (string): Código del idioma de destino.
 - `texto` (string): El texto que se desea traducir.
 
 # Respuesta
 
-#### Cuerpo de la respuesta (JSON)
+##### Cuerpo de la respuesta (JSON)
 
 ```json
 {
@@ -45,27 +54,28 @@ Traduce el texto enviado en la solicitud de un idioma de origen a un idioma de d
 }
 ```
 
-#### Parámetros de la respuesta
+##### Parámetros de la respuesta
 
 - `texto_traducido` (string): El texto traducido al idioma de destino
 
-#### Ejemplo de solicitud
+##### Ejemplo de solicitud
 
-````
-curl -X POST http://<tu-dominio>/traducir -H "Content-Type: application/json" -d '{
-  "idioma_origen": "en",
-  "idioma_destino": "es",
-  "texto": "Hello, world!"
-}'
+```
+curl -X POST http://localhost:5000/traducir \
+  -H "Authorization: Bearer TU_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "idioma_origen": "en",
+      "idioma_destino": "es",
+      "texto": "Hello, world!"
+      }'
 
-````
+```
 
-#### Ejemplo de respuesta 
+##### Ejemplo de respuesta
 
-````json
+```json
 {
   "texto_traducido": "Hola, mundo!"
 }
-
-````
-
+```

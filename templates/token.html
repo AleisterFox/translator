@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Generar Token</h1>
+<p>Para generar un token de acceso, haz clic en el botón de abajo:</p>
+<button id="generar-token">Generar Token</button>
+<div class="token-field">
+  <h4>Token:</h4>
+  <p id="token"></p>
+  <div class="copy">
+    <i class="fas fa-copy"></i>
+    <p>Copiar token</p>
+  </div>
+</div>
+
+<script>
+  const copy = document.querySelector(".copy");
+  document
+    .getElementById("generar-token")
+    .addEventListener("click", async () => {
+      const respuesta = await fetch("/token");
+      const datos = await respuesta.json();
+      console.log("token:", datos.access_token);
+      const token = document.getElementById("token");
+      token.textContent = datos.access_token;
+      copy.style.display = "flex";
+    });
+
+  copy.addEventListener("click", () => {
+    var elemento = document.getElementById("token");
+    var texto = elemento.innerText;
+    var elementoTemporal = document.createElement("textarea");
+    elementoTemporal.value = texto;
+    document.body.appendChild(elementoTemporal);
+    elementoTemporal.select();
+    document.execCommand("copy");
+    document.body.removeChild(elementoTemporal);
+    copy.firstElementChild.classList.remove("fa-copy");
+    copy.firstElementChild.classList.add("fa-check");
+    copy.lastElementChild.textContent = "¡Copiado!";
+    setTimeout(() => {
+      copy.firstElementChild.classList.remove("fa-check");
+      copy.firstElementChild.classList.add("fa-copy");
+      copy.lastElementChild.textContent = "Copiar token";
+    }, 1500);
+  });
+
+  function copiarTexto() {
+    /* Obtener el elemento que contiene el texto que deseas copiar */
+    var elemento = document.getElementById("token");
+
+    /* Seleccionar el texto dentro del elemento */
+    var texto = elemento.innerText;
+
+    /* Crear un elemento de texto temporal para copiar el texto */
+    var elementoTemporal = document.createElement("textarea");
+    elementoTemporal.value = texto;
+
+    /* Agregar el elemento temporal al cuerpo del documento */
+    document.body.appendChild(elementoTemporal);
+
+    /* Seleccionar y copiar el texto en el elemento temporal */
+    elementoTemporal.select();
+    document.execCommand("copy");
+
+    /* Eliminar el elemento temporal */
+    document.body.removeChild(elementoTemporal);
+
+    alert("Token copiado: ");
+  }
+</script>
+{% endblock %}
