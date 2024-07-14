@@ -5,9 +5,12 @@ from googletrans import Translator
 traducir_bp = Blueprint('traducir', __name__)
 translator = Translator()
 
-@traducir_bp.route('/traducir', methods=['POST'])
+@traducir_bp.route('/traducir', methods=['POST', 'OPTIONS'])
 @jwt_required()
 def traducir_texto():
+    if request.method == 'OPTIONS':
+        return jsonify({'Allow': 'POST'}), 200
+    
     datos = request.get_json()
     idioma_origen = datos.get('idioma_origen')
     idioma_destino = datos.get('idioma_destino')
