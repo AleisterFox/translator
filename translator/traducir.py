@@ -16,7 +16,13 @@ def traducir_texto():
     idioma_destino = datos.get('idioma_destino')
     texto = datos.get('texto')
     
-    if not idioma_origen or not idioma_destino or not texto:
+    if not idioma_origen:
+        try:
+            idioma_origen = translator.detect(texto).lang
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    
+    if not idioma_destino or not texto:
         return jsonify({'error': 'Faltan parámetros'}), 400
     
     try:
@@ -25,6 +31,7 @@ def traducir_texto():
         return jsonify({'error': str(e)}), 500
     
     return jsonify({'texto_traducido': traduccion.text})
+
 
 @traducir_bp.route('/')
 def index():
