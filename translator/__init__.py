@@ -9,6 +9,8 @@ def create_app():
     
     app.config['JWT_SECRET_KEY'] = '1!2"3#4$5%6&7/8(9)0='  # Cambia esto por una clave segura
     app.config['JWT_ALGORITHM'] = 'HS256'  # Algoritmo de firma HMAC con SHA-256
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
+    
     jwt = JWTManager(app)
     
     with app.app_context():
